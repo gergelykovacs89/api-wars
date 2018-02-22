@@ -1,8 +1,6 @@
 window.$ = jQuery;
 
 
-
-
 function getModalTable(residentsData) {
     var table = document.getElementById('table-modal');
     table.innerHTML = "";
@@ -61,14 +59,13 @@ function getTable(response) {
                 cell6.innerHTML = button;
             }
             var cell7 = row.insertCell(7);
+
     };
 }
 
+
 document.addEventListener('DOMContentLoaded', pageButtons);
-
 function pageButtons() {
-
-
     var req = new XMLHttpRequest();
     var URLhost = 'https://swapi.co/api/planets/';
     var f = 1;
@@ -76,7 +73,6 @@ function pageButtons() {
     req.addEventListener('load', function () {
         if (req.status >= 200 && req.status < 400) {
             var response = JSON.parse(req.responseText);
-            console.log(response.results);
             getTable(response);
 
 
@@ -133,12 +129,11 @@ function pageButtons() {
 
 $('#exampleModal').on('show.bs.modal', function (event) {
     var residentsData = [];
-    var button = $(event.relatedTarget); // Button that triggered the modal
+    getModalTable(residentsData);
+    var button = $(event.relatedTarget);
     var planet = button.data('whatever');
     var residents = button.data('residents').split(',');
-    console.log(residents);
     residents.forEach(function (element) {
-        console.log(element);
         var newURLhost = element;
         var newReq = new XMLHttpRequest();
         newReq.open('GET', newURLhost, true);
@@ -149,15 +144,11 @@ $('#exampleModal').on('show.bs.modal', function (event) {
                 getModalTable(residentsData);
             } else {
                 console.log("Error in network request: " + newReq.statusText);
-            }});
+            }
+        });
                 newReq.send(null);
     });
-
-    // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
-        var modal = $(this);
-        modal.find('.modal-title').text('Residents of  ' + planet);
+    var modal = $(this);
+    modal.find('.modal-title').text('Residents of  ' + planet);
 });
 

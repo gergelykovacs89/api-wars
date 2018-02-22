@@ -1,5 +1,7 @@
 from flask import Flask, render_template, redirect, request, url_for, session
 import requests
+import hash_handler
+import data_handler
 app = Flask(__name__, static_url_path='')
 app.secret_key = '0ptimi$t4uzeml4k4to$'
 
@@ -22,7 +24,7 @@ def login_page():
         if hash_handler.verify_password(request.form['password'], user_info['pwd_hash']):
             session['username'] = user_info['username']
             session['user_id'] = user_info['user_id']
-            return redirect(url_for('list_question'))
+            return redirect(url_for('index'))
         else:
             return render_template('login.html', wrong_data_help=wrong_data_help)
     return render_template('login.html')
@@ -32,7 +34,7 @@ def login_page():
 def logout():
     session.pop('username', None)
     session.pop('user_id', None)
-    return redirect(url_for('list_question'))
+    return redirect(url_for('index'))
 
 
 @app.route('/registration', methods=['GET', 'POST'])
@@ -41,10 +43,9 @@ def registration():
         user_name = request.form['user_name']
         password = request.form['password']
         verify_password = request.form['verify_password']
-        enemy = request.form['enemy']
         if password == verify_password:
             pwd_hash = hash_handler.hash_password(password)
-            data_handler.insert_new_user(user_name, pwd_hash, enemy)
+            data_handler.insert_new_user(user_name, pwd_hash)
             return render_template('login.html')
     return render_template('registration_form.html')
 
