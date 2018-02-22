@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div class="">
+        <meta charset="UTF-8">
+        <title>AskM8</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    </div>
+</head>
+<body>
+    <div class="form">
+        <form method="post">
+        <fieldset id="fieldset">
+            <legend>Please fill the registration form</legend>
+            <p><label for="user_name">User name</label><br></p>
+            <input id="user_name" name="user_name" placeholder="User name" required ><br>
+            <p></p>
+            <p><label for="password">Password</label><br></p>
+            <input id="password" name="password" type="password" placeholder="Password" required><br>
+            <p></p>
+            <p><label for="verify_password">Verify Password</label><br></p>
+            <input id="verify_password" name="verify_password" type="password" placeholder="Verify Password" required><br>
+            <p></p>
+            <button type="submit">Submit</button>
+        </fieldset>
+        </form>
+    </div>
+</body>
+</html>
