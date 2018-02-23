@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, request, url_for, session
-import requests
 import hash_handler
 import data_handler
 app = Flask(__name__, static_url_path='')
@@ -8,7 +7,6 @@ app.secret_key = '0ptimi$t4uzeml4k4to$'
 
 @app.route('/')
 def index():
-
     return render_template('index.html')
 
 

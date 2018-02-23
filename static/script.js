@@ -29,6 +29,7 @@ function getModalTable(residentsData) {
 function getTable(response) {
     var table = document.getElementById('table-body');
     table.innerHTML = "";
+    var paged = 10;
     for (let k = 0; k < response.results.length; k++) {
             var row = table.insertRow(k);
             var cell0 = row.insertCell(0);
@@ -59,7 +60,6 @@ function getTable(response) {
                 cell6.innerHTML = button;
             }
             var cell7 = row.insertCell(7);
-
     };
 }
 
@@ -125,7 +125,6 @@ function pageButtons() {
     });
 
 }
-
 
 $('#exampleModal').on('show.bs.modal', function (event) {
     var residentsData = [];
