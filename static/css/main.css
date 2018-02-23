@@ -1,0 +1,8 @@
+div.waitingdiv {
+position: fixed;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+background: url("../graphics/ajax-loader.gif") no-repeat center center;
+}

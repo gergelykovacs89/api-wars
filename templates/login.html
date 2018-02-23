@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+<div class="login-page">
+  <div class="form">
+        </form>
+        <form action="/login" method="POST" class="login-form">
+            {% if wrong_data_help == None %}
+                    <input name="username" type="text" placeholder="wrong username or password"/>
+                    <input name="password" type="password" />
+                    <button>Login</button>
+            {% else %}
+                  <input name="username" type="text" placeholder="username"/>
+                  <input name="password" type="password" placeholder="password"/>
+                  <button>Login</button>
+            {% endif %}
+
+        </form>
+      <form action="{{ url_for('registration') }}">
+          <input type="submit" value="Registration" />
+      </form>
+  </div>
+</div>
