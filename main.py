@@ -47,9 +47,3 @@ def registration():
             return render_template('login.html')
     return render_template('registration_form.html')
 
-
-app.run(
-        host='0.0.0.0',
-        port=7000,
-        debug=True
-    )
